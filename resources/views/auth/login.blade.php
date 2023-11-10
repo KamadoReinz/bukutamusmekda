@@ -18,15 +18,22 @@
 </head>
 
 <body class="hold-transition login-page">
+    <style>
+        body {
+            background-position: center center;
+            background-size: cover;
+            background-image: url('dist/img/smekda.jpg');
+        }
+    </style>
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Masuk</a>
+                <a href="javascript:;" class="h1"><b>Masuk</a>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Masukkan Email dan Password Anda</p>
-                
+
                 @include('_message')
 
                 <form action="{{ url('login') }}" method="post">

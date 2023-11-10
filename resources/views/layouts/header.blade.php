@@ -5,6 +5,11 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
     </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('logout') }}" role="button"><i class="fas fa-sign-out-alt"> </i> Log out</a>
+        </li>
+    </ul>
 </nav>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -24,19 +29,6 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-            </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                    aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
             </div>
         </div>
 
@@ -68,15 +60,18 @@
                         </a>
                     </li>
 
+                    <li class="nav-header">LIST</li>
+
                     <li class="nav-item">
                         <a href="{{ url('admin/tamu/list') }}"
                             class="nav-link @if (Request::segment(2) == 'tamu') active @endif">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Data Tamu
+                                Tamu
                             </p>
                         </a>
                     </li>
+
                 @elseif (Auth::user()->role == 2)
                     <li class="nav-item">
                         <a href="{{ url('petugas/dashboard') }}"
@@ -88,49 +83,18 @@
                         </a>
                     </li>
 
-                    <li class="nav-header">MANAJEMEN</li>
+                    <li class="nav-header">LIST</li>
 
                     <li class="nav-item">
                         <a href="{{ url('petugas/tamu/list') }}"
                             class="nav-link @if (Request::segment(2) == 'tamu') active @endif">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Data Tamu
+                                Tamu
                             </p>
                         </a>
                     </li>
                 @endif
-
-                <li class="nav-header">MISCELLANEOUS</li>
-                <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <p>Tabbed IFrame Plugin</p>
-                    </a>
-                </li>
-
-                <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
-                        <p>Level 1</p>
-                    </a>
-                </li>
-
-                <li class="nav-header">LABELS</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-danger"></i>
-                        <p class="text">Important</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ url('logout') }}" class="nav-link">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
-                        <p class="text">Logout</p>
-                    </a>
-                </li>
 
             </ul>
         </nav>

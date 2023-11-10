@@ -34,10 +34,16 @@ class PetugasTamuController extends Controller
 
     public function update($id, Request $request)
     {
+        Carbon::setLocale('id_ID');
+        Carbon::setToStringFormat('d F Y H:i:s');
+
+        $tanggal = Carbon::now()->setTimezone('Asia/Jakarta');
+
         $save = TamuModel::getSingle($id);
         $save->nama = $request->nama;
         $save->alamat = $request->alamat;
         $save->tujuan = $request->tujuan;
+        $save['created_at'] = $tanggal;
         $save->save();
 
         return redirect('petugas/tamu/list')->with('success', 'Tamu Berhasil Diperbarui');

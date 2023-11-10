@@ -18,6 +18,13 @@
 </head>
 
 <body class="hold-transition login-page">
+    <style>
+        body {
+            background-position: center center;
+            background-size: cover;
+            background-image: url('dist/img/smekda.jpg');
+        }
+    </style>
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
@@ -60,7 +67,7 @@
 
                 <p class="mb-1">
                     <br>
-                    <a href="{{ url('login') }}">login</a>
+                    <a href="{{ url('login') }}">Login</a>
                 </p>
             </div>
             <!-- /.card-body -->
