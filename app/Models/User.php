@@ -49,7 +49,7 @@ class User extends Authenticatable
                         ->where('is_delete', '=', 0)
                         ->whereIn('role', [1,2])
                         ->orderBy('id', 'desc')
-                        ->get();
+                        ->paginate(15);
     }
 
     static public function getSingle($id)

@@ -13,7 +13,7 @@ class AdminController extends Controller
     {
         $data['getRecord'] = User::getAdmin();
         $data['header_title'] = "List Admin";
-        return view('admin.admin.list', $data);
+        return view('admin.user.list', $data);
     }
 
     public function insert(Request $request)
@@ -21,7 +21,7 @@ class AdminController extends Controller
         request()->validate([
             'email' => 'required|email|unique:users'
         ]);
-
+        
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim($request->email);
@@ -29,7 +29,7 @@ class AdminController extends Controller
         $user->role = 2;
         $user->save();
 
-        return redirect('admin/admin/list')->with('success', 'User Berhasil Ditambahkan');
+        return redirect('admin/user/list')->with('success', 'User Berhasil Ditambahkan');
     }
 
     public function update($id, Request $request)
@@ -47,7 +47,7 @@ class AdminController extends Controller
         }
         $user->save();
 
-        return redirect('admin/admin/list')->with('success', 'User Berhasil Diperbarui');
+        return redirect('admin/user/list')->with('success', 'User Berhasil Diperbarui');
     }
 
     public function delete($id)
@@ -56,6 +56,6 @@ class AdminController extends Controller
         $user->is_delete = 1;
         $user->save();
 
-        return redirect('admin/admin/list')->with('success', 'User Berhasil Dihapus');
+        return redirect('admin/user/list')->with('success', 'User Berhasil Dihapus');
     }
 }

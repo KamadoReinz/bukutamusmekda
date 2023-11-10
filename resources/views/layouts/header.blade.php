@@ -10,8 +10,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="javascript:;" class="brand-link">
-        <img src="{{ url('dist/img/smk.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ url('dist/img/smk.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
         <span class="brand-text font-weight-light">Buku Tamu</span>
     </a>
 
@@ -46,9 +46,9 @@
                 data-accordion="false">
 
                 @if (Auth::user()->role == 1)
-
                     <li class="nav-item">
-                        <a href="{{ url('admin/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
+                        <a href="{{ url('admin/dashboard') }}"
+                            class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
@@ -59,7 +59,8 @@
                     <li class="nav-header">MANAJEMEN</li>
 
                     <li class="nav-item">
-                        <a href="{{ url('admin/admin/list') }}" class="nav-link @if (Request::segment(2) == 'admin') active @endif">
+                        <a href="{{ url('admin/user/list') }}"
+                            class="nav-link @if (Request::segment(2) == 'user') active @endif">
                             <i class="nav-icon far fa-user"></i>
                             <p>
                                 Users
@@ -67,17 +68,37 @@
                         </a>
                     </li>
 
-                @elseif (Auth::user()->role == 2)
-
                     <li class="nav-item">
-                        <a href="{{ url('petugas/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
+                        <a href="{{ url('admin/tamu/list') }}"
+                            class="nav-link @if (Request::segment(2) == 'tamu') active @endif">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Data Tamu
+                            </p>
+                        </a>
+                    </li>
+                @elseif (Auth::user()->role == 2)
+                    <li class="nav-item">
+                        <a href="{{ url('petugas/dashboard') }}"
+                            class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Dashboard
                             </p>
                         </a>
                     </li>
-                    
+
+                    <li class="nav-header">MANAJEMEN</li>
+
+                    <li class="nav-item">
+                        <a href="{{ url('petugas/tamu/list') }}"
+                            class="nav-link @if (Request::segment(2) == 'tamu') active @endif">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Data Tamu
+                            </p>
+                        </a>
+                    </li>
                 @endif
 
                 <li class="nav-header">MISCELLANEOUS</li>

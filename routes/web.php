@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PetugasTamuController;
+use App\Http\Controllers\TamuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,15 +33,24 @@ Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
-    Route::get('admin/admin/list', [AdminController::class, 'list']);
-    Route::post('admin/admin/add', [AdminController::class, 'insert']);
-    Route::post('admin/admin/edit/{id}', [AdminController::class, 'update']);
-    Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
+
+    Route::get('admin/user/list', [AdminController::class, 'list']);
+    Route::post('admin/user/add', [AdminController::class, 'insert']);
+    Route::post('admin/user/edit/{id}', [AdminController::class, 'update']);
+    Route::get('admin/user/delete/{id}', [AdminController::class, 'delete']);
+
+    // tamu url
+    Route::get('admin/tamu/list', [TamuController::class, 'list']);
 
 });
 
 Route::group(['middleware' => 'petugas'], function () {
 
     Route::get('petugas/dashboard', [DashboardController::class, 'dashboard']);
+
+    Route::get('petugas/tamu/list', [PetugasTamuController::class, 'list']);
+    Route::post('petugas/tamu/add', [PetugasTamuController::class, 'insert']);
+    Route::post('petugas/tamu/edit/{id}', [PetugasTamuController::class, 'update']);
+    Route::get('petugas/tamu/delete/{id}', [PetugasTamuController::class, 'delete']);
 
 });
