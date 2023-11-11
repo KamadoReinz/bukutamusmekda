@@ -51,8 +51,9 @@
                                             <td>
                                                 <a href="#edit{{ $value->id }}" data-toggle="modal"
                                                     class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ url('admin/user/delete/' . $value->id) }}"
-                                                    class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                                <button class="btn btn-danger btn-delete"
+                                                    onclick="deleteUser('{{ route('user.delete', $value->id) }}')"
+                                                    id="delete"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -73,3 +74,31 @@
     <!-- /.content -->
     @include('admin.user.modal')
 @endsection
+@push('js')
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetalert2/dist/sweetalert2.css') }}">
+    <script src="{{ asset('assets/js/plugins/sweetalert2/dist/sweetalert2.js') }}"></script>
+
+    <script>
+        function deleteUser(action) {
+            Swal.fire({
+                title: "Hapus User?",
+                text: "Apakah Anda Yakin Akan Menghapus User Ini?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Iya",
+                cancelButtonText: "Batal",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href=action
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "User Berhasil Dihapus.",
+                        icon: "success"
+                    });
+                }
+            });
+        }
+    </script>
+@endpush

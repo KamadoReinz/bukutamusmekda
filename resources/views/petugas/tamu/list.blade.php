@@ -27,7 +27,24 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">List Tamu</h3>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <form action="" method="GET">
+                                        <div class="d-flex" style="gap: 10px;">
+                                            <div>
+                                                <input type="date" class="form-control" name="date"
+                                                    value="{{ Request::get('date') }}">
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-outline-primary" type="submit">Cari</button>
+                                            </div>
+                                            <div>
+                                                <a href="{{ url('petugas/tamu/list') }}" class="btn btn-outline-secondary">Reset</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -53,8 +70,9 @@
                                             <td>
                                                 <a href="#edit{{ $value->id }}" data-toggle="modal"
                                                     class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="{{ url('petugas/tamu/delete/' . $value->id) }}"
-                                                    class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                                <button class="btn btn-danger btn-delete"
+                                                    onclick="deleteTamu('{{ route('tamu.delete', $value->id) }}')"
+                                                    id="delete"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -75,3 +93,31 @@
     <!-- /.content -->
     @include('petugas.tamu.modal')
 @endsection
+@push('js')
+    <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetalert2/dist/sweetalert2.css') }}">
+    <script src="{{ asset('assets/js/plugins/sweetalert2/dist/sweetalert2.js') }}"></script>
+
+    <script>
+        function deleteTamu(action) {
+            Swal.fire({
+                title: "Hapus Tamu?",
+                text: "Apakah Anda Yakin Akan Menghapus Tamu Ini?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Iya",
+                cancelButtonText: "Batal",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = action
+                    Swal.fire({
+                        title: "Berhasil!",
+                        text: "Tamu Berhasil Dihapus.",
+                        icon: "success"
+                    });
+                }
+            });
+        }
+    </script>
+@endpush

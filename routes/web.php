@@ -37,7 +37,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/user/list', [AdminController::class, 'list']);
     Route::post('admin/user/add', [AdminController::class, 'insert']);
     Route::post('admin/user/edit/{id}', [AdminController::class, 'update']);
-    Route::get('admin/user/delete/{id}', [AdminController::class, 'delete']);
+    Route::get('admin/user/delete/{id}', [AdminController::class, 'delete'])->name('user.delete');
 
     // tamu url
     Route::get('admin/tamu/list', [TamuController::class, 'list']);
@@ -51,6 +51,6 @@ Route::group(['middleware' => 'petugas'], function () {
     Route::get('petugas/tamu/list', [PetugasTamuController::class, 'list']);
     Route::post('petugas/tamu/add', [PetugasTamuController::class, 'insert']);
     Route::post('petugas/tamu/edit/{id}', [PetugasTamuController::class, 'update']);
-    Route::get('petugas/tamu/delete/{id}', [PetugasTamuController::class, 'delete']);
+    Route::get('petugas/tamu/delete/{id}', [PetugasTamuController::class, 'delete'])->name('tamu.delete');
 
 });
