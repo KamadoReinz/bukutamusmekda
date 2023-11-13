@@ -7,7 +7,8 @@
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="{{ url('logout') }}" role="button"><i class="fas fa-sign-out-alt"> </i> Log out</a>
+            <a class="nav-link" href="{{ url('logout') }}" role="button"><i class="fas fa-sign-out-alt"> </i> Log
+                out</a>
         </li>
     </ul>
 </nav>
@@ -24,7 +25,7 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div>
+            <div class="image">
                 <img src="{{ url('dist/img/donat.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
@@ -71,7 +72,6 @@
                             </p>
                         </a>
                     </li>
-
                 @elseif (Auth::user()->role == 2)
                     <li class="nav-item">
                         <a href="{{ url('petugas/dashboard') }}"
@@ -96,17 +96,17 @@
                     </li>
                 @endif
 
-                    <li class="nav-item">
-                        <a href="{{ url('bulanan') }}"
-                            class="nav-link
+                <li class="nav-item">
+                    <a href="{{ url('bulanan') }}"
+                        class="nav-link
                             {{ Route::currentRouteName() == 'bulanan.index' ? 'active' : '' }}
                             {{ Route::currentRouteName() == 'bulanan.show' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-list"></i>
-                            <p>
-                                Data Bulanan
-                            </p>
-                        </a>
-                    </li>
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Data Bulanan
+                        </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>
