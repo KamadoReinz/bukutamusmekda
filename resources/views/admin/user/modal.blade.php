@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url('admin/admin/add') }}" method="POST">
+            <form action="{{ url('admin/user/add') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">

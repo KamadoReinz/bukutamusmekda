@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ !empty($header_title) ? $header_title : '' }} | SMKN 2 Purwakarta</title>
+    <title>Buku Tamu SMKN 2 Purwakarta</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -81,8 +81,8 @@
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    @yield('script')
 
+    @yield('script')
     @stack('js')
 
 </body>

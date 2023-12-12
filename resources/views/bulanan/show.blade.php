@@ -5,9 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>List Tamu</h1>
-                </div>
-                <div class="col-sm-6" style="text-align: right;">
+                    <h1>Detail Data Tamu Bulan : {{ \Carbon\Carbon::parse('01-'.request()->bulan)->isoFormat('MMMM ') }}</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -20,10 +18,9 @@
                 <!-- /.col -->
                 <div class="col-md-12">
 
+                    @include('_message')
+
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">List Tamu</h3>
-                        </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <table class="table table-striped">
@@ -33,11 +30,11 @@
                                         <th>Nama</th>
                                         <th>Alamat</th>
                                         <th>Tujuan</th>
-                                        <th>Dibuat Tanggal</th>
+                                        <th>Tanggal & Waktu</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($getRecord as $key => $value)
+                                    @foreach ($data['getRecord'] as $key => $value)
                                         <tr style="text-align: center;">
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $value->nama }}</td>
@@ -49,7 +46,7 @@
                                 </tbody>
                             </table>
                             <div style="padding: 10px; float: right;">
-                                
+                                {!! $data['getRecord']->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                             </div>
                         </div>
                         <!-- /.card-body -->

@@ -50,10 +50,12 @@
                                             {{-- <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td> --}}
                                             <td>
                                                 <a href="#edit{{ $value->id }}" data-toggle="modal"
-                                                    class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                    class="btn btn-primary"><i class="fas fa-edit"></i>
+                                                </a>
                                                 <button class="btn btn-danger btn-delete"
                                                     onclick="deleteUser('{{ route('user.delete', $value->id) }}')"
-                                                    id="delete"><i class="fas fa-trash"></i></button>
+                                                    id="delete"><i class="fas fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -74,6 +76,7 @@
     <!-- /.content -->
     @include('admin.user.modal')
 @endsection
+
 @push('js')
     <link rel="stylesheet" href="{{ asset('assets/js/plugins/sweetalert2/dist/sweetalert2.css') }}">
     <script src="{{ asset('assets/js/plugins/sweetalert2/dist/sweetalert2.js') }}"></script>
@@ -91,7 +94,7 @@
                 cancelButtonText: "Batal",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href=action
+                    window.location.href = action
                     Swal.fire({
                         title: "Berhasil!",
                         text: "User Berhasil Dihapus.",

@@ -39,7 +39,8 @@
                                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                                             </div>
                                             <div>
-                                                <a href="{{ url('petugas/tamu/list') }}" class="btn btn-outline-secondary">Reset</a>
+                                                <a href="{{ url('petugas/tamu/list') }}"
+                                                    class="btn btn-outline-secondary">Reset</a>
                                             </div>
                                         </div>
                                     </form>

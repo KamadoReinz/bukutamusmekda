@@ -12,6 +12,10 @@ class TamuModel extends Model
 
     protected $table = 'tamu';
 
+    protected $guarded=[
+        'id'
+    ];
+
     static public function getSingle($id)
     {
         return self::find($id);
@@ -19,8 +23,7 @@ class TamuModel extends Model
 
     static public function getRecord()
     {
-        $return = self::select('tamu.*')
-                        ->where('is_delete', '=', 0);
+        $return = self::select('tamu.*');
                         if (!empty(Request::get('date')))
                         {
                             $return = $return->whereDate('created_at', '=', Request::get('date'));
@@ -30,5 +33,6 @@ class TamuModel extends Model
                         ->paginate(15);
 
         return $return;
+
     }
 }

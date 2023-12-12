@@ -5,9 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>List Tamu</h1>
-                </div>
-                <div class="col-sm-6" style="text-align: right;">
+                    <h1>List Data Tamu Bulanan</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -20,37 +18,34 @@
                 <!-- /.col -->
                 <div class="col-md-12">
 
+                    @include('_message')
+
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">List Tamu</h3>
-                        </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <table class="table table-striped">
                                 <thead>
                                     <tr style="text-align: center;">
-                                        <th>No</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
-                                        <th>Tujuan</th>
-                                        <th>Dibuat Tanggal</th>
+                                        <th>Bulan</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($getRecord as $key => $value)
-                                        <tr style="text-align: center;">
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $value->nama }}</td>
-                                            <td>{{ $value->alamat }}</td>
-                                            <td>{{ $value->tujuan }}</td>
-                                            <td>{{ date('d-m-Y H:i:s', strtotime($value->created_at)) }}</td>
-                                        </tr>
-                                    @endforeach
+                                @forelse ($bulananTamu as $item)
+                                <tr style="text-align: center;">
+                                    <td>{{ \Carbon\Carbon::parse('01-'.$item->new_date)->isoFormat('MMMM Y') }}</td>
+                                    <td>
+                                        <a href="{{ route('bulanan.show', $item->new_date) }}" class="btn btn-warning" style="font-weight: bold; color: rgb(0, 0, 0)">Detail</a>
+                                        <a href="{{ route('bulanan.cetak', $item->new_date) }}" class="btn btn-success" style="font-weight: bold; color: rgb(0, 0, 0)"><i class="fas fa-print"></i></a>
+                                    </td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="6" class="text-center fs-5">Belum ada Data</td>
+                                </tr>
+                                @endforelse
                                 </tbody>
                             </table>
-                            <div style="padding: 10px; float: right;">
-                                
-                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

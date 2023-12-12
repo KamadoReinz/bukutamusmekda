@@ -52,9 +52,9 @@ class PetugasTamuController extends Controller
     public function delete($id)
     {
         $save = TamuModel::getSingle($id);
-        $save->is_delete = 1;
-        $save->save();
+        $save->delete();
 
         return redirect('petugas/tamu/list')->with('success', 'Tamu Berhasil Dihapus');
     }
+
 }

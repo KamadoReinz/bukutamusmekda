@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PetugasTamuController;
 use App\Http\Controllers\TamuController;
+use App\Http\Controllers\BulananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,13 @@ Route::post('forgot-password', [AuthController::class, 'PostForgotPassword']);
 Route::get('reset/{token}', [AuthController::class, 'reset']);
 Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
+// Laporan Bulanan & Cetak
+Route::get('bulanan', [BulananController::class, 'index'])->name('bulanan.index');
+Route::get('bulanan/detail/{bulan}', [BulananController::class, 'show'])->name('bulanan.show');
+Route::get('bulanan/cetak/{bulan}', [BulananController::class, 'cetak'])->name('bulanan.cetak');
+
+
+// Admin
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
@@ -39,11 +47,12 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/user/edit/{id}', [AdminController::class, 'update']);
     Route::get('admin/user/delete/{id}', [AdminController::class, 'delete'])->name('user.delete');
 
-    // tamu url
+    // Tamu
     Route::get('admin/tamu/list', [TamuController::class, 'list']);
 
 });
 
+// Petugas
 Route::group(['middleware' => 'petugas'], function () {
 
     Route::get('petugas/dashboard', [DashboardController::class, 'dashboard']);

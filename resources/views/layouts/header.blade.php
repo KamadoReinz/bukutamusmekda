@@ -24,11 +24,11 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ url('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+            <div>
+                <img src="{{ url('dist/img/donat.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                <a href="#" class="d-block" style="font-weight: bold">{{ Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                     <li class="nav-item">
                         <a href="{{ url('admin/dashboard') }}"
                             class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-desktop"></i>
                             <p>
                                 Dashboard
                             </p>
@@ -76,7 +76,7 @@
                     <li class="nav-item">
                         <a href="{{ url('petugas/dashboard') }}"
                             class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-desktop"></i>
                             <p>
                                 Dashboard
                             </p>
@@ -88,13 +88,25 @@
                     <li class="nav-item">
                         <a href="{{ url('petugas/tamu/list') }}"
                             class="nav-link @if (Request::segment(2) == 'tamu') active @endif">
-                            <i class="nav-icon fas fa-table"></i>
+                            <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Tamu
                             </p>
                         </a>
                     </li>
                 @endif
+
+                    <li class="nav-item">
+                        <a href="{{ url('bulanan') }}"
+                            class="nav-link
+                            {{ Route::currentRouteName() == 'bulanan.index' ? 'active' : '' }}
+                            {{ Route::currentRouteName() == 'bulanan.show' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                Data Bulanan
+                            </p>
+                        </a>
+                    </li>
 
             </ul>
         </nav>
